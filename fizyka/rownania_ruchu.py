@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-print('jedyna dopuszczalna zmienna to "t", w postaci:\nA * i + B * j')
+print('jedyna dopuszczalna zmienna to "t", zapisz w postaci:\nA * i + B * j')
 
 a = input('A: ')
 b = input('B: ')
@@ -16,5 +16,5 @@ while t <= 4:
     ypoints.append(eval(b))
     t+=0.1
 
-plt.plot(xpoints, ypoints)
+plt.plot(xpoints, ypoints,'o')
 plt.show()
