@@ -45,6 +45,8 @@ plt.xlabel("x[m]")
 plt.ylabel("y[m]")
 
 lines = []
+h_lines = []
+v_lines = []
 
 colors = ['blue', 'red', 'green', 'purple', 'black']
 
@@ -52,12 +54,24 @@ for j in range(line_num):
     line, = axis.plot([], [], 'o', color = colors[j], label = f'{a_list[j]} * i + {b_list[j]} * j')
     lines.append(line)
 
+    h_line, = axis.plot([], [], color = 'grey', linewidth = 1)
+    h_lines.append(h_line)
+
+    v_line, = axis.plot([], [], color = 'grey', linewidth = 1)
+    v_lines.append(v_line)
+
 def init():
     
     for line in lines:
         line.set_data([], [])
+    
+    for h_line in h_lines:
+        h_line.set_data([], [])
+    
+    for v_line in v_lines:
+        v_line.set_data([], [])
 
-    return lines
+    return lines + h_lines + v_lines
 
 def animate(i):
 	
@@ -70,8 +84,11 @@ def animate(i):
         y = eval(b_list[j])
         
         line.set_data(x, y)
+        
+        h_lines[j].set_data([0, x], [y,y])
+        v_lines[j].set_data([x, x], [0,y])
 
-    return lines
+    return lines + h_lines + v_lines
 
 plt.legend()
 
