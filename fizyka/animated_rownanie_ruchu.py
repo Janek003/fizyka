@@ -8,7 +8,9 @@ b_list = []
 line_num = int(input("Ile rownan ruchu? [max 5]: "))
 while line_num > 5:
     line_num = int(input("Podales za duza ilosc rownan, Ile rownan ruchu? [max 5]: "))
-      
+
+max_t = int(input("Max t: "))
+
 print('--------------------\njedyna dopuszczalna zmienna to "t", rownanie w postaci:\nA * i + B * j\n')
 for j in range(line_num):
     
@@ -20,10 +22,24 @@ for j in range(line_num):
 
     print()
 
+t = max_t
 
-# creating a blank window for the animation 
-fig = plt.figure() 
-axis = plt.axes(xlim =(0,16), ylim =(0, 8)) 
+x_skrajnosci = [0]
+y_skrajnosci = [0]
+
+for j in range(line_num):
+    x_skrajnosci.append(eval(a_list[j]))
+    y_skrajnosci.append(eval(b_list[j]))
+
+x_min = min(x_skrajnosci)
+x_max = max(x_skrajnosci)
+
+y_min = min(y_skrajnosci)
+y_max = max(y_skrajnosci)
+
+
+fig = plt.figure()
+axis = plt.axes(xlim = (x_min, x_max), ylim = (y_min, y_max)) 
 
 lines = [] 
 colors = ['blue', 'red', 'green', 'purple', 'black']
@@ -32,8 +48,6 @@ for j in range(line_num):
     line, = axis.plot([], [], 'o', color = colors[j])
     lines.append(line)
 
-# what will our line dataset 
-# contain? 
 def init():
     
     for line in lines:
@@ -54,6 +68,6 @@ def animate(i):
 
     return lines
 
-anim = animation.FuncAnimation(fig, animate, init_func = init, frames = 400, interval = 4, blit = True) 
+anim = animation.FuncAnimation(fig, animate, init_func = init, frames = max_t*100, interval = max_t, blit = True) 
 
 plt.show()
