@@ -46,10 +46,8 @@ plt.ylabel("y[m]")
 
 lines = []
 
-colors = ['blue', 'red', 'green', 'purple', 'black']
-
 for j in range(line_num):
-    line, = axis.plot([], [], 'o', color = colors[j], label = f'{a_list[j]} * i + {b_list[j]} * j')
+    line, = axis.plot([], [], 'o', label = f'{a_list[j]} * i + {b_list[j]} * j')
     lines.append(line)
 
 def init():
@@ -74,6 +72,7 @@ def animate(i):
     return lines
 
 plt.legend()
+plt.grid()
 
 anim = animation.FuncAnimation(fig, animate, init_func = init, frames = max_t*100, interval = max_t, blit = True)
 
