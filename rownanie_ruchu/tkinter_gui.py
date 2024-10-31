@@ -61,6 +61,8 @@ def define_plot(max_t, a_list, b_list, ile_rownan):
     fig = plt.figure()
     axis = plt.axes(xlim = (x_min, x_max), ylim = (y_min, y_max))
 
+    fig.canvas.manager.window.showMaximized()
+    
     plt.xlabel("x[m]")
     plt.ylabel("y[m]")
 
@@ -101,7 +103,7 @@ def len_gui():
     frm.grid()
     
     Label(frm, text='Ile rownan ruchu?', font=25).grid(row=0, column=0)
-    ile_rownan_entry = Entry(frm, font=25)
+    ile_rownan_entry = Entry(frm, font=25, width=10)
     confirm_button = Button(frm, font=25, text='CONFIRM', command=lambda: main_gui(ile_rownan_entry.get()))
     
     ile_rownan_entry.grid(row=0, column=1)
@@ -124,10 +126,10 @@ def main_gui(ile_rownan_str):
     for i in range(ile_rownan): ttk.Label(frm, text=f'r{i+1}: ', font=25).grid(row=i, column=0)
 
     entries_a = [Entry(frm, font = 25) for _ in range(ile_rownan)]
-    for i in range(ile_rownan): Label(frm,text = 'test', font = 25).grid(row = i, column = 2)
+    for i in range(ile_rownan): Label(frm,text = '* i + ', font = 25).grid(row = i, column = 2)
 
     entries_b = [Entry(frm, font = 25) for _ in range(ile_rownan)]
-    for i in range(ile_rownan): Label(frm, text = 'test', font = 25).grid(row = i, column = 4)
+    for i in range(ile_rownan): Label(frm, text = '* j', font = 25).grid(row = i, column = 4)
     
     for i, entry in enumerate(entries_a):
         entry.grid(row=i, column=1)
@@ -137,7 +139,7 @@ def main_gui(ile_rownan_str):
     
     
     Label(frm2, text='Max t[s]: ', font = 25).grid(row=0,column=0)
-    max_t_entry = Entry(frm2, font=25)
+    max_t_entry = Entry(frm2, font=25, width=5)
     max_t_entry.grid(row=0, column=1)
     
     button_generate = Button(frm2, font=25, text='generate', height = 2, width=50, bg='lightblue', command=lambda: generate_animation(entries_a, entries_b, max_t_entry, ile_rownan))
