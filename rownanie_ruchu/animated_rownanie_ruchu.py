@@ -22,6 +22,8 @@ for j in range(line_num):
 
     print()
 
+print(a_list, b_list)
+
 t = max_t
 
 x_skrajnosci = [0]
@@ -67,7 +69,7 @@ def animate(i):
         x = eval(a_list[j])
         y = eval(b_list[j])
         
-        line.set_data(x, y)
+        line.set_data([x], [y])
 
     return lines
 
