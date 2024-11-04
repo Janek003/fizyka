@@ -60,8 +60,6 @@ def define_plot(max_t, a_list, b_list, ile_rownan):
 
     fig = plt.figure()
     axis = plt.axes(xlim = (x_min, x_max), ylim = (y_min, y_max))
-
-    fig.canvas.manager.window.showMaximized()
     
     plt.xlabel("x[m]")
     plt.ylabel("y[m]")
