@@ -3,6 +3,7 @@ import matplotlib.animation as animation
 from tkinter import *
 from tkinter import ttk
 import numpy
+import math
 
 def generate_animation(entries_a, entries_b, max_t_entry, ile_rownan):
     
